@@ -40,7 +40,8 @@ rsyslogd -v
 `seaslert -a /var/log/audit/audit.log`
 
 ## LS Command SElinux provides extra details
-`la -laZ`
+`ls -laZ /etc/audit`  
+
 
 ## PS Command with the "Z" flag option set, shows associated context with the process or file
 `ps -fauxZ`
@@ -59,6 +60,9 @@ rsyslogd -v
 
 ## Addiing execeptions to SELinux
 `sudo yum install policycoreutils`
+
+##SELinux Gui
+`sudo yum install policycoreutils-gui.x86_64`  
 
 ## Verify which syslog ports are allowed
 `sudo semanage port -l| grep syslog`
