@@ -61,14 +61,14 @@ rsyslogd -v
 ## Addiing execeptions to SELinux
 `sudo yum install policycoreutils`
 
-##SELinux Gui
+## SELinux Gui    
 `sudo yum install policycoreutils-gui.x86_64`  
 
 ## Verify which syslog ports are allowed
 `sudo semanage port -l| grep syslog`
 
 ## Add anew port policy  
-`sudo semanage port -m -t syslogd_port_t -p tcp 5140`
+`sudo semanage port -m -t syslogd_port_t -p tcp 5140`  
 `sudo semanage port -a -t syslogd_port_t -p udp 5140`
 
 ## May need to authorize the /var/spool/rsyslog directory
