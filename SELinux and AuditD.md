@@ -65,6 +65,7 @@ rsyslogd -v
 
 ## Add anew port policy  
 `sudo semanage port -m -t syslogd_port_t -p tcp 5140`
+`sudo semanage port -a -t syslogd_port_t -p udp 5140`
 
 ## May need to authorize the /var/spool/rsyslog directory
 `sudo semanage fcontext -a -t syslogd_var_lib_t "/var/spool/rsyslog/*"`
