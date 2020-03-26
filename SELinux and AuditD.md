@@ -90,8 +90,14 @@ sudo restorecon -v /etc/rsyslog.d
 ## auditd_t process type permissive  
 `semanage permissive -a auditd_t`  
 
+## Start auditd service  
+`service auditd start`  
+
+## Set persistence   
+`systemctl enable auditd`  
+
 ## Restart syslog
-`sudo service syslog restart` 
+`sudo service rsyslog restart` 
 
 ## Check rules (make sure they are valid)  
 `augenrules --check`  
