@@ -24,5 +24,6 @@ permissions are the permissions that are logged:
    w — write access to a file or a directory.
    x — execute access to a file or a directory.
    a — change in the file's or directory's attribute. 
-   key_name is an optional string that helps you identify which rule or a set of rules generated a particular log entry.   
+   key_name is an optional string that helps you identify which rule or a set of rules generated a particular log entry.
+   
 ```  
