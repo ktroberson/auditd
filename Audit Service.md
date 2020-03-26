@@ -10,7 +10,7 @@ stop — stops auditd.
 restart — restarts auditd.
 reload or force-reload — reloads the configuration of auditd from the /etc/audit/auditd.conf file.
 rotate — rotates the log files in the /var/log/audit/ directory.
-resume — resumes logging of Audit events after it has been previously suspended, for example, when there is not enough free space      on the disk partition that holds the Audit log files.
+resume — resumes logging of Audit events after it has been previously suspended, for example, when there is not enough free space on the disk partition that holds the Audit log files.
 condrestart or try-restart — restarts auditd only if it is already running.
 status — displays the running status of auditd.  
 ```  
@@ -24,6 +24,5 @@ permissions are the permissions that are logged:
    w — write access to a file or a directory.
    x — execute access to a file or a directory.
    a — change in the file's or directory's attribute. 
-   key_name is an optional string that helps you identify which rule or a set of rules generated a particular log entry.
-   
-```  
+   key_name is an optional string that helps you identify which rule or a set of rules generated a particular log entry.  
+     
