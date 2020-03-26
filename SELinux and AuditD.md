@@ -87,6 +87,10 @@ sudo semanage fcontext -a -t etc_t "/etc/rsyslog.d"
 sudo restorecon -v /etc/rsyslog.d
 ```  
 
+##  How to create the new label
+`chcon -t <etc_T> -u <system_u> <filename>`    
+
+
 ## auditd_t process type permissive  
 `semanage permissive -a auditd_t`  
 
