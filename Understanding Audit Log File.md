@@ -1,37 +1,29 @@
 ##  Understanding Audit Log Files  
-####First Record
-```  
+####  First Record 
 type=SYSCALL
     The type field contains the type of the record. In this example, the SYSCALL value specifies that this record was triggered by a system call to the kernel.
     For a list of all possible type values and their explanations 
-```  
-```  
+  
 #### msg=audit(1364481363.243:24287):
 The msg field records:
 *  a time stamp and a unique ID of the record in the form audit(time_stamp:ID). Multiple records can share the same time stamp and ID if they were generated as part of the same Audit event.
 *  various event-specific name=value pairs provided by the kernel or user space applications. 
-```  
-```  
+ 
 #### arch=c000003e
     The arch field contains information about the CPU architecture of the system. The value, c000003e, is encoded in hexadecimal notation. When searching Audit records with the ausearch command, use the -i or --interpret option to automatically convert hexadecimal values into their human-readable equivalents. The c000003e value is interpreted as x86_64.  
-```  
-```  
+ 
 #### syscall=2
 The syscall field records the type of the system call that was sent to the kernel. The value, 2, can be matched with its human-readable equivalent in the /usr/include/asm/unistd_64.h file. In this case, 2 is the open system call. Note that the ausyscall utility allows you to convert system call numbers to their human-readable equivalents. Use the ausyscall --dump command to display a listing of all system calls along with their numbers. For more information, see the ausyscall(8) man page.  
-```  
-```  
+  
 #### success=no  
 The success field records whether the system call recorded in that particular event succeeded or failed. In this case, the call did not succeed.  
-```  
-```  
+ 
 #### exit=-13
 The exit field contains a value that specifies the exit code returned by the system call. This value varies for different system call. You can interpret the value to its human-readable equivalent with the following command: ausearch --interpret --exit -13 (assuming your Audit log contains an event that failed with exit code -13).  
-```  
-```  
+ 
 ####  a0=7fffd19c5592, a1=0, a2=7fffd19c5592, a3=a
 The a0 to a3 fields record the first four arguments, encoded in hexadecimal notation, of the system call in this event. These arguments depend on the system call that is used; they can be interpreted by the ausearch utility.
-``` 
-```  
+ 
 ####  items=1
     The items field contains the number of path records in the event. 
 ####  ppid=2686
