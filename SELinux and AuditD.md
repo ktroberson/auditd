@@ -72,7 +72,9 @@ rsyslogd -v
 `sudo semanage port -a -t syslogd_port_t -p udp 5140`
 
 ## May need to authorize the /var/spool/rsyslog directory
-`sudo semanage fcontext -a -t syslogd_var_lib_t "/var/spool/rsyslog/*"`
+`sudo semanage fcontext -a -t syslogd_var_lib_t "/var/spool/rsyslog/*"`  
+
+## Set the context type with restorecon cmd    
 `sudo restorecon -Rv /var/spool/rsyslog`  
 `sudo restorecon -Rv /etc/audit`  
 `sudo restorecon -Rv /var/log/audit`  
