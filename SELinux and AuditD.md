@@ -67,13 +67,15 @@ rsyslogd -v
 ## Verify which syslog ports are allowed
 `sudo semanage port -l| grep syslog`
 
-## Add anew port policy  
+## Add a new port policy  
 `sudo semanage port -m -t syslogd_port_t -p tcp 5140`  
 `sudo semanage port -a -t syslogd_port_t -p udp 5140`
 
 ## May need to authorize the /var/spool/rsyslog directory
 `sudo semanage fcontext -a -t syslogd_var_lib_t "/var/spool/rsyslog/*"`
-`sudo restorecon -R -v /var/spool/rsyslog`
+`sudo restorecon -Rv /var/spool/rsyslog`  
+`sudo restorecon -Rv /etc/audit`  
+`sudo restorecon -Rv /var/log/audit`  
 
 ## May also need to authorize /etc/rsyslog.d/*
 ```
@@ -81,7 +83,13 @@ sudo semanage fcontext -a -t syslog_conf_t "/etc/rsyslog.d/"
 sudo restorecon -R -v /etc/rsyslog.d/
 sudo semanage fcontext -a -t etc_t "/etc/rsyslog.d"
 sudo restorecon -v /etc/rsyslog.d
-```
+```  
+
+## auditd_t process type permissive  
+`semanage permissive -a auditd_t`  
 
 ## Restart syslog
-`sudo service syslog restart`
+`sudo service syslog restart`  
+
+## For more information please the visit
+`https://www.systutorials.com/docs/linux/man/8-auditd_selinux/`  
