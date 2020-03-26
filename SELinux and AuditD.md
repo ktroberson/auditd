@@ -91,7 +91,12 @@ sudo restorecon -v /etc/rsyslog.d
 `semanage permissive -a auditd_t`  
 
 ## Restart syslog
-`sudo service syslog restart`  
+`sudo service syslog restart` 
+
+## Check rules (make sure they are valid)  
+`augenrules --check`  
+`augenrules --load`  
+#### Make all changes to rules in the rules.d 
 
 ## For more information please the visit
 `https://www.systutorials.com/docs/linux/man/8-auditd_selinux/`  
