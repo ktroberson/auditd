@@ -108,5 +108,9 @@ sudo restorecon -v /etc/rsyslog.d
 `augenrules --load`  
 #### Make all changes to rules in the rules.d 
 
+## Troubleshooting  
+`ausearch -c 'in:imfile' --raw | audit2allow -M my-inimfile`  
+`semodule -i my-inimfile.pp`  
+
 ## For more information please the visit
 `https://www.systutorials.com/docs/linux/man/8-auditd_selinux/`  
