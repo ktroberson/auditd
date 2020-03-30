@@ -112,5 +112,38 @@ sudo restorecon -v /etc/rsyslog.d
 `ausearch -c 'in:imfile' --raw | audit2allow -M my-inimfile`  
 `semodule -i my-inimfile.pp`  
 
+#### Forwarding audit logs via rsyslog with selinux active  
+Do the following if you are unable to get rsyslog to ship auditd logs with SELinux enabled  
+
+Create a module file
+`sudo nano rsyslog.te`   
+Cut and paste the following
+```
+module rsyslog 1.0;
+
+require {
+        type syslogd_t;
+        type auditd_log_t;
+        class file read;
+        class file ioctl;
+        class file open;
+        class file getattr;
+        class dir search;
+}
+
+#============= syslogd_t ==============
+allow syslogd_t auditd_log_t:file read;
+allow syslogd_t auditd_log_t:file ioctl;
+allow syslogd_t auditd_log_t:file open;
+allow syslogd_t auditd_log_t:file getattr;
+allow syslogd_t auditd_log_t:dir search;
+```  
+Compile with the following commands  
+`checkmodule -M -m -o rsyslog.mod rsyslog.te`  
+`semodule_package -o rsyslog.pp -m rsyslog.mod`  
+Import the new module
+`semodule -i rsyslog.pp`  
+
+
 ## For more information please the visit
 `https://www.systutorials.com/docs/linux/man/8-auditd_selinux/`  
