@@ -141,7 +141,7 @@ allow syslogd_t auditd_log_t:dir search;
 Compile with the following commands  
 `checkmodule -M -m -o rsyslog.mod rsyslog.te`  
 `semodule_package -o rsyslog.pp -m rsyslog.mod`  
-Import the new module
+Import the new module  
 `semodule -i rsyslog.pp`  
 
 
